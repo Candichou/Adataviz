@@ -1,6 +1,5 @@
 import "./style.css";
 
-/* https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/laboratoires-danalyses-medicales/records?limit=20 */
 const app = document.getElementById("app");
 let offset = 0;
 const limit = 20;
@@ -33,6 +32,7 @@ btnLoadMore.addEventListener("click", () => {
   offset += limit;
   fetchLaboratories();
 });
+
 /* --------------------------------------------
 ******** AFFICHAGE DES LABORATOIRES ***********
 _______________________________________________ */
@@ -102,7 +102,7 @@ __________________________________________ */
 async function fetchLaboratories() {
   try {
     const response = await fetch(
-      `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/laboratoires-danalyses-medicales/records?limit=${limit}&offset=${offset}`
+      `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/laboratoires-danalyses-medicales/records?limit=${limit}&offset=${offset}`,
     );
     const apiData = await response.json();
     const newLaboratories = apiData.results;
